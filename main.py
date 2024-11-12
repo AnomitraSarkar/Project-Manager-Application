@@ -41,8 +41,6 @@ class Login(QMainWindow):
             self.userIDedit.setText("")
             self.passwordedit.setText("")
         
-        
-
 class DashBoard_Prof(QMainWindow):
     def __init__(self, cursor):
         global action
@@ -187,10 +185,19 @@ class Project(QMainWindow):
             self.project_table.setItem(i,1,QtWidgets.QTableWidgetItem(rec[i][1]))
             self.project_table.setItem(i,2,QtWidgets.QTableWidgetItem(rec[i][2]))
             self.project_table.setItem(i,3,QtWidgets.QTableWidgetItem(f'{rec[i][3]}'))
-            
+                  
+
+class TeamAndTask(QMainWindow):
+    def __init__(self,cursor, PID):
+        super(TeamAndTask, self).__init__()
+        uic.loadUi("teamANDtask.ui", self)
+        self.project_table.setColumnWidth(1,250)
+        self.load(cursor,PID)
+        self.show()
         
-        
-        
+    def load(self, cursor,PID):
+        self.pidlabel.setText(PID)
+                  
 def starterrorlog():
     global csv_writer
     f = open("errorlog.csv","w",newline="")
@@ -222,6 +229,11 @@ def project(cursor):
     window = Project(cursor)
     project.exec_()
 
+def teamANDtask(cursor, PID):
+    teamANDtask = QApplication([])
+    window = TeamAndTask(cursor, PID)
+    teamANDtask.exec_()
+
 def initialize():
     return pag.password("Enter the Authentication Key Below", "Boot Auth")
 
@@ -246,7 +258,7 @@ def main():
         if action == "project":
             project(cursor)
             if action == "openproject":
-                print("opening project manager for", PID)
+                teamANDtask(cursor, PID=PID)
         elif action == "submission":
             print("Starting Submission Panel")
         else:

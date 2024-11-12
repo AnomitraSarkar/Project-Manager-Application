@@ -126,6 +126,24 @@ class Project(QMainWindow):
         self.show()
         self.deleteprojectbtn.clicked.connect(lambda : self.deleteproject(cursor))
         self.addprojectbtn.clicked.connect(lambda : self.addproject(cursor))
+        self.openprojectbtn.clicked.connect(lambda: self.openproject(cursor))
+    
+    def openproject(self, cursor):
+        global PID, action
+        try:
+            val = int(pag.prompt("Enter the Project ID, which is to be Opened"))
+            cursor.execute(f"select * from project where pid = {val}")
+            cursor.fetchall()
+            if (cursor.rowcount <= 0):
+                pag.alert("Invalid Project ID!\nTry Again")
+            else:
+                PID = val
+                action = "openproject"
+                self.close()
+        except Exception as e:
+            csv_writer.writerow([f'{e}'])
+            print(e)
+            pag.alert("An Error Occured.\nTry Again!")
     
     def addproject(self, cursor):
         temp_pid = self.projectidedit.text()
@@ -227,6 +245,8 @@ def main():
         dashboard_prof(cursor)
         if action == "project":
             project(cursor)
+            if action == "openproject":
+                print("opening project manager for", PID)
         elif action == "submission":
             print("Starting Submission Panel")
         else:

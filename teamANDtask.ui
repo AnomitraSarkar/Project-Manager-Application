@@ -11,18 +11,32 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Team And Task Panel</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="team_table">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>40</x>
       <y>140</y>
-      <width>281</width>
+      <width>331</width>
       <height>192</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <column>
+     <property name="text">
+      <string>TeamID</string>
+     </property>
+    </column>
     <column>
      <property name="text">
       <string>User ID</string>
@@ -37,17 +51,25 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>360</x>
       <y>20</y>
-      <width>55</width>
+      <width>131</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Project ID</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="pidlabel">
     <property name="geometry">
      <rect>
       <x>480</x>
@@ -55,6 +77,14 @@
       <width>55</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>PID</string>
@@ -65,32 +95,26 @@
      <rect>
       <x>100</x>
       <y>90</y>
-      <width>91</width>
+      <width>151</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Team Allocated</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QPushButton" name="addmemberbtn">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>90</y>
-      <width>55</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Team ID</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>360</y>
+      <x>60</x>
+      <y>350</y>
       <width>131</width>
       <height>28</height>
      </rect>
@@ -99,11 +123,11 @@
      <string>Add Member</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="deletememberbtn">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>360</y>
+      <x>200</x>
+      <y>350</y>
       <width>141</width>
       <height>28</height>
      </rect>
@@ -134,11 +158,18 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="text">
      <string>Task</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tableWidget_2">
+   <widget class="QTableWidget" name="task_table">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -146,6 +177,15 @@
       <width>511</width>
       <height>192</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
     </property>
     <column>
      <property name="text">
@@ -168,7 +208,7 @@
      </property>
     </column>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="addtaskbtn">
     <property name="geometry">
      <rect>
       <x>660</x>
@@ -181,7 +221,7 @@
      <string>Add Task</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="deletetaskbtn">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -194,7 +234,7 @@
      <string>Delete Task</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="changetaskstatusbtn">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -207,7 +247,7 @@
      <string>Change Task Status</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton">
+   <widget class="QRadioButton" name="radioButton_completed">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -216,11 +256,16 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Completed</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_2">
+   <widget class="QRadioButton" name="radioButton_ongoing">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -229,11 +274,16 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="text">
      <string>Ongoing</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="projectidedit">
+   <widget class="QLineEdit" name="taskidedit">
     <property name="geometry">
      <rect>
       <x>862</x>
@@ -241,6 +291,11 @@
       <width>91</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="placeholderText">
      <string>Task ID</string>
@@ -254,6 +309,11 @@
       <width>91</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="placeholderText">
      <string>Title</string>
@@ -282,7 +342,7 @@
      <string>Due Date</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="descedit">
+   <widget class="QTextEdit" name="taskdescedit">
     <property name="geometry">
      <rect>
       <x>660</x>
@@ -291,15 +351,20 @@
       <height>131</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="placeholderText">
      <string>Task Description</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="goback">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>500</y>
+      <x>60</x>
+      <y>460</y>
       <width>281</width>
       <height>28</height>
      </rect>
@@ -308,17 +373,40 @@
      <string>Go Back</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QLineEdit" name="newteamidedit">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>420</y>
+      <x>60</x>
+      <y>390</y>
       <width>281</width>
-      <height>28</height>
+      <height>22</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Edit Team ID</string>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
+    </property>
+    <property name="placeholderText">
+     <string>Team ID</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="newuseridedit">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>420</y>
+      <width>281</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
+    </property>
+    <property name="placeholderText">
+     <string>User ID</string>
     </property>
    </widget>
   </widget>

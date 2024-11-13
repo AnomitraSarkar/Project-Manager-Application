@@ -151,6 +151,11 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
+    </property>
     <property name="placeholderText">
      <string>Project ID</string>
     </property>
@@ -163,6 +168,11 @@
       <width>201</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="placeholderText">
      <string>Title</string>
@@ -222,6 +232,11 @@
       <width>141</width>
       <height>131</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="placeholderText">
      <string>Project Description</string>
